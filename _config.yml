@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "default"
+site_theme               : "single"
 title                    : "Elias Strauss"
 title_separator          : "-"
 name                     : &name "Your Name"
@@ -22,14 +22,14 @@ repository               : "e-strauss/e-strauss.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "github-profile-picture2.jpg"
   name             : "Elias Strauss"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
+  bio              : "Master's Student in Computer Science"
+  location         : "Berlin"
   employer         : "TU Berlin"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "e.strauss@tu-berlin.de"
 
   # Academic websites
   academia         : # URL
