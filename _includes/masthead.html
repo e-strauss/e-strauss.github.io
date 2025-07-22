@@ -6,7 +6,20 @@
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/">{{ site.title }}</a></li>
+          <li class="masthead__menu-item persist">
+            <a href="https://www.tu.berlin/" target="_blank" rel="noopener">
+              <img src="{{ base_path }}/images/tub.svg" alt="TU Berlin Logo" style="height: 48px; vertical-align: middle;">
+            </a>
+          </li>
+          <li class="masthead__menu-item persist">
+            <a href="https://www.bifold.berlin/" target="_blank" rel="noopener">
+              <img src="{{ base_path }}/images/BIFOLD_Logo_farbig.svg" alt="BIFOLD Logo" style="height: 20px; vertical-align: middle;">
+            </a>
+          </li>
+          <li class="masthead__menu-item masthead__menu-item--lg persist">
+            <a href="{{ base_path }}/">{{ site.title }}</a>
+          </li>
+
           {% for link in site.data.navigation.main %}
             {% if link.url contains 'http' %}
               {% assign domain = '' %}
