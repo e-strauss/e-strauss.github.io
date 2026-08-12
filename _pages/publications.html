@@ -5,32 +5,30 @@ permalink: /publications/
 author_profile: true
 ---
 
+{% include base_path %}
+
 {% if site.author.googlescholar %}
   <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
 {% endif %}
 
-{% include base_path %}
+{% assign pubs = site.publications | sort: 'date' | reverse %}
+{% assign years = pubs | group_by_exp: "post", "post.date | date: '%Y'" %}
 
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
+{% for year in years %}
+  <h2>{{ year.name }}</h2>
+  <hr />
+  <ul class="publication-list">
+    {% for post in year.items %}
+      <li>
+        <h4><a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a></h4>
+        {% if post.authors %}{{ post.authors }}<br />{% endif %}
+        <b>{{ post.venue }}</b>{% if post.venuedetail %} {{ post.venuedetail }}{% endif %}
+        {% if post.paperurl %} | <a href="{{ post.paperurl }}">paper</a>{% endif %}
+        {% if post.arxivurl %} | <a href="{{ post.arxivurl }}">arXiv</a>{% endif %}
+        {% if post.codeurl %} | <a href="{{ post.codeurl }}">code</a>{% endif %}
+        {% if post.slidesurl %} | <a href="{{ post.slidesurl }}">slides</a>{% endif %}
+        {% if post.bibtexurl %} | <a href="{{ post.bibtexurl }}">bibtex</a>{% endif %}
+      </li>
     {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
-
-
-
+  </ul>
+{% endfor %}

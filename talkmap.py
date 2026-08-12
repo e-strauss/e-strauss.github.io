@@ -1,4 +1,4 @@
-# Leaflet cluster map of talk locations
+@# Leaflet cluster map of talk locations
 #
 # Run this from the _talks/ directory, which contains .md files of all your
 # talks. This scrapes the location YAML field from each .md file, geolocates it

@@ -7,6 +7,13 @@ author_profile: true
 
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+<ul class="publication-list">
+  {% assign courses = site.teaching | sort: 'date' | reverse %}
+  {% for post in courses %}
+    <li>
+      <h4><a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a>{% if post.courseurl %}
+        | <a href="{{ post.courseurl }}">{{ post.term | default: post.date | date: "%Y" }}</a>{% endif %}</h4>
+      {{ post.role | default: post.type }}{% if post.instructor %} &middot; Instructor: {{ post.instructor }}{% endif %} &middot; {{ post.venue }}
+    </li>
+  {% endfor %}
+</ul>
